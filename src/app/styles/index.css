@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import 'animate.css';
+
+.toastContainer {
+    z-index: 2000;
+}
+
+body {
+    font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: white;
+    font-weight: 500;
+}
+
+input:invalid {
+    animation: zzzz 0.1s;
+}
+
+@keyframes zzzz {
+    0% {
+        transform: translateX(4px);
+    }
+    50% {
+        transform: translateX(-4px);
+    }
+    100% {
+        transform: translateX(4px);
+    }
+}

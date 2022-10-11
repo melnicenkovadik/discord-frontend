@@ -2,7 +2,15 @@
   "name": "discord-frontend",
   "version": "0.1.0",
   "private": true,
+  "main": "app/index.tsx",
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.2.0",
+    "@fortawesome/free-regular-svg-icons": "^6.2.0",
+    "@fortawesome/free-solid-svg-icons": "^6.2.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@material-tailwind/react": "^1.2.4",
+    "@react-buddy/ide-toolbox": "^2.2.1",
+    "@react-buddy/react-scripts": "^1.0.1",
     "@reduxjs/toolkit": "^1.8.5",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -11,24 +19,43 @@
     "@types/node": "^17.0.45",
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",
+    "animate.css": "^4.1.1",
+    "async-mutex": "^0.4.0",
+    "axios": "^1.1.2",
+    "classnames": "^2.3.2",
+    "formik": "^2.2.9",
+    "prettier": "^2.7.1",
     "react": "^18.2.0",
+    "react-cookie": "^4.1.1",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.4",
+    "react-router-dom": "^6.4.2",
     "react-scripts": "5.0.1",
+    "react-toast": "^1.0.3",
+    "socket.io-client": "^4.5.2",
     "typescript": "^4.8.4",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "yup": "^0.32.11"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "format": "prettier --write  \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\""
   },
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
     ]
+  },
+  "prettier": {
+    "trailingComma": "all",
+    "tabWidth": 2,
+    "singleQuote": true,
+    "printWidth": 100,
+    "arrowParens": "avoid"
   },
   "browserslist": {
     "production": [
