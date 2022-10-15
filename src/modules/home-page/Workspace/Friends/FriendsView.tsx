@@ -1,5 +1,5 @@
 import { IconButton, Tab, TabPanel, Tabs, TabsBody, TabsHeader, Typography } from '@material-tailwind/react';
-import AddFriend from '../layout/AddFriend';
+import AddFriend from './AddFriend';
 import { useActions } from '../../../app/hooks/actions';
 import { useToast } from '../../../app/hooks/use-toast';
 import { useAppSelector } from '../../../app/hooks/redux';
