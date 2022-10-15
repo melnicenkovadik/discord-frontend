@@ -1,6 +1,6 @@
 import { useCallback, useState, useLayoutEffect } from 'react';
 
-const useRectHook = (ref:any) => {
+const useRectHook = (ref: any) => {
   const [size, setSize] = useState({
     x: 0,
     y: 0,
@@ -9,7 +9,7 @@ const useRectHook = (ref:any) => {
     bottom: 0,
     right: 0,
     width: 0,
-    height: 0
+    height: 0,
   });
 
   const handleResize = useCallback(() => {
@@ -23,16 +23,16 @@ const useRectHook = (ref:any) => {
         bottom: rect.bottom,
         right: rect.right,
         width: rect.width,
-        height: rect.height
+        height: rect.height,
       });
     }
   }, [ref.current]);
 
   useLayoutEffect(() => {
     handleResize();
-    window.addEventListener("resize", handleResize, true);
+    window.addEventListener('resize', handleResize, true);
     return () => {
-      window.removeEventListener("resize", handleResize, true);
+      window.removeEventListener('resize', handleResize, true);
     };
   }, [handleResize, ref]);
 

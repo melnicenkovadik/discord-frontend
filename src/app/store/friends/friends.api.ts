@@ -8,42 +8,46 @@ export const friendsApi = createApi({
   }),
   endpoints: builder => ({
     sendFriendInvitation: builder.query<string, string>({
-      query: (mail) => ({
+      query: mail => ({
         url: '/friend-invitation/invite',
         method: 'POST',
         body: {
           targetMailAddress: mail,
         },
         headers: {
-          'Authorization': `${AuthorizationBearer}`,
+          Authorization: `${AuthorizationBearer}`,
         },
       }),
     }),
     acceptFriendInvitation: builder.query<string, string>({
-      query: (id) => ({
+      query: id => ({
         url: '/friend-invitation/accept',
         method: 'POST',
         body: {
           id,
         },
         headers: {
-          'Authorization': `${AuthorizationBearer}`,
+          Authorization: `${AuthorizationBearer}`,
         },
       }),
     }),
     rejectFriendInvitation: builder.query<string, string>({
-      query: (id) => ({
+      query: id => ({
         url: '/friend-invitation/reject',
         method: 'POST',
         body: {
           id,
         },
         headers: {
-          'Authorization': `${AuthorizationBearer}`,
+          Authorization: `${AuthorizationBearer}`,
         },
       }),
     }),
   }),
 });
 
-export const { useLazySendFriendInvitationQuery, useLazyAcceptFriendInvitationQuery,useLazyRejectFriendInvitationQuery } = friendsApi;
+export const {
+  useLazySendFriendInvitationQuery,
+  useLazyAcceptFriendInvitationQuery,
+  useLazyRejectFriendInvitationQuery,
+} = friendsApi;

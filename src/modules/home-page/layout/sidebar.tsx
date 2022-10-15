@@ -1,49 +1,124 @@
-const Sidebar = () => {
-  const groups = [
-    {
-      name: 'Мої повідомлення',
-      icon: (
-        <svg className='homeIcon-r0w4ny' aria-hidden='true' role='img' width='28' height='20' viewBox='0 0 28 20'>
-          <path fill='currentColor'
-                d='M23.0212 1.67671C21.3107 0.879656 19.5079 0.318797 17.6584 0C17.4062 0.461742 17.1749 0.934541 16.9708 1.4184C15.003 1.12145 12.9974 1.12145 11.0283 1.4184C10.819 0.934541 10.589 0.461744 10.3368 0.00546311C8.48074 0.324393 6.67795 0.885118 4.96746 1.68231C1.56727 6.77853 0.649666 11.7538 1.11108 16.652C3.10102 18.1418 5.3262 19.2743 7.69177 20C8.22338 19.2743 8.69519 18.4993 9.09812 17.691C8.32996 17.3997 7.58522 17.0424 6.87684 16.6135C7.06531 16.4762 7.24726 16.3387 7.42403 16.1847C11.5911 18.1749 16.408 18.1749 20.5763 16.1847C20.7531 16.3332 20.9351 16.4762 21.1171 16.6135C20.41 17.0369 19.6639 17.3997 18.897 17.691C19.3052 18.4993 19.7718 19.2689 20.3021 19.9945C22.6677 19.2689 24.8929 18.1364 26.8828 16.6466H26.8893C27.43 10.9731 25.9665 6.04728 23.0212 1.67671ZM9.68041 13.6383C8.39754 13.6383 7.34085 12.4453 7.34085 10.994C7.34085 9.54272 8.37155 8.34973 9.68041 8.34973C10.9893 8.34973 12.0395 9.54272 12.0187 10.994C12.0187 12.4453 10.9828 13.6383 9.68041 13.6383ZM18.3161 13.6383C17.0332 13.6383 15.9765 12.4453 15.9765 10.994C15.9765 9.54272 17.0124 8.34973 18.3161 8.34973C19.6184 8.34973 20.6751 9.54272 20.6543 10.994C20.6543 12.4453 19.6184 13.6383 18.3161 13.6383Z'></path>
-        </svg>
-      ),
-    },
-    {
-      name: 'INC4',
-      icon: (
-        <svg className='homeIcon-r0w4ny' aria-hidden='true' role='img' width='28' height='20' viewBox='0 0 28 20'>
-          <path fill='currentColor'
-                d='M23.0212 1.67671C21.3107 0.879656 19.5079 0.318797 17.6584 0C17.4062 0.461742 17.1749 0.934541 16.9708 1.4184C15.003 1.12145 12.9974 1.12145 11.0283 1.4184C10.819 0.934541 10.589 0.461744 10.3368 0.00546311C8.48074 0.324393 6.67795 0.885118 4.96746 1.68231C1.56727 6.77853 0.649666 11.7538 1.11108 16.652C3.10102 18.1418 5.3262 19.2743 7.69177 20C8.22338 19.2743 8.69519 18.4993 9.09812 17.691C8.32996 17.3997 7.58522 17.0424 6.87684 16.6135C7.06531 16.4762 7.24726 16.3387 7.42403 16.1847C11.5911 18.1749 16.408 18.1749 20.5763 16.1847C20.7531 16.3332 20.9351 16.4762 21.1171 16.6135C20.41 17.0369 19.6639 17.3997 18.897 17.691C19.3052 18.4993 19.7718 19.2689 20.3021 19.9945C22.6677 19.2689 24.8929 18.1364 26.8828 16.6466H26.8893C27.43 10.9731 25.9665 6.04728 23.0212 1.67671ZM9.68041 13.6383C8.39754 13.6383 7.34085 12.4453 7.34085 10.994C7.34085 9.54272 8.37155 8.34973 9.68041 8.34973C10.9893 8.34973 12.0395 9.54272 12.0187 10.994C12.0187 12.4453 10.9828 13.6383 9.68041 13.6383ZM18.3161 13.6383C17.0332 13.6383 15.9765 12.4453 15.9765 10.994C15.9765 9.54272 17.0124 8.34973 18.3161 8.34973C19.6184 8.34973 20.6751 9.54272 20.6543 10.994C20.6543 12.4453 19.6184 13.6383 18.3161 13.6383Z'></path>
-        </svg>
-      ),
-    },
+import { MouseEvent } from 'react';
+import {
+  createNewRoomHandler,
+  joinRoom,
+  leaveRoom,
+} from '../../../app/realtimeComunications/roomHandler';
+import { GrAdd } from '@react-icons/all-files/gr/GrAdd';
+import { useAppSelector } from '../../../app/hooks/redux';
+import { Tooltip } from '@material-tailwind/react';
 
-  ];
+const Sidebar = () => {
+  const { activeRooms, isUserInRoom } = useAppSelector(state => state.room);
+
+  function createNewRoom(event: MouseEvent<HTMLButtonElement>) {
+    createNewRoomHandler();
+  }
 
   return (
-    <div className='flex flex-col w-68 h-screen bg-gray-800 pt-2 px-3 '>
-      <div className='flex flex-col justify-between flex-1 pt-2 py-2'>
-        <div className='flex flex-col items-center justify-end pb-6'>
-          {
-            groups.map(({ name, icon }, index) => (
-              <div key={name} className='flex flex-col '>
-                <button
-                  className={`flex items-center justify-center w-12 h-12 mb-2
+    <div className="flex flex-col w-68 h-screen bg-gray-800 pt-2 px-3 ">
+      <div className="flex flex-col justify-between flex-1 pt-2 py-2">
+        <div className="flex flex-col items-center justify-end pb-6">
+          <button
+            className={`flex items-center justify-center w-12 h-12 mb-2
                         text-gray-500 transition-colors duration-150 bg-white
                          hover:text-gray-700 hover:bg-gray-100 focus:outline-none
                           transition-transform transform hover:scale-110
-                           animate__animated 
-                         ${index === 1 ? 'animate__flipInX' : 'animate__fadeInLeft'}
-                         ${index === 0 ? 'rounded-lg' : `${index > 0 ? 'rounded-full hover:rounded-lg' : 'hover:rounded-full'}`}  hover:bg-gray-100`}>
-                  {icon}
-                </button>
-                {index === 0 ? <div className='h-1 rounded-xl w-[100%] bg-black mb-2 opacity-20' /> : null}
-              </div>
-            ))
-          }
+                           animate__animated   animate__fadeInLeft
+                        rounded-lg  hover:bg-gray-100`}
+          ></button>
+          <div className="h-1 rounded-xl w-[100%] bg-black mb-2 opacity-20" />
+          <button
+            disabled={isUserInRoom}
+            className={`flex items-center justify-center w-12 h-12 mb-2
+                        text-gray-500 transition-colors duration-150 bg-gray
+                         hover:text-gray-700 hover:bg-gray focus:outline-none
+                          transition-transform transform hover:scale-110
+                           animate__animated animate__flipInX 
+                          rounded-full   hover:bg-gray-100`}
+            onClick={createNewRoom}
+          >
+            <GrAdd />
+          </button>
+          {activeRooms.map((room: any) => {
+            return (
+              <ActiveRoomsButton
+                key={room.id}
+                creatorUsername={room.creatorUsername}
+                roomId={room.roomId}
+                amountOfParticipants={room.participants?.length}
+                isUserInRoom={isUserInRoom}
+              />
+            );
+          })}
         </div>
       </div>
+    </div>
+  );
+};
+
+interface IActiveRoomsButton {
+  creatorUsername: string;
+  roomId: string;
+  amountOfParticipants: number;
+  isUserInRoom: boolean;
+}
+
+const ActiveRoomsButton = ({
+  creatorUsername,
+  roomId,
+  amountOfParticipants,
+  isUserInRoom,
+}: IActiveRoomsButton) => {
+  const activeRoomButtonDisabled = amountOfParticipants > 3;
+  const roomTitle = (
+    <div className="flex flex-col items-start justify-start">
+      Створив(ла) : {creatorUsername}
+      <div className="flex flex-row items-center justify-center">
+        Учасників : {amountOfParticipants}
+      </div>
+    </div>
+  );
+
+  function handleJoinActiveRoom(event: MouseEvent<HTMLButtonElement>) {
+    if (isUserInRoom) {
+      leaveRoom();
+    } else {
+      if (amountOfParticipants < 4) {
+        joinRoom(roomId);
+      }
+    }
+  }
+
+  return (
+    <div key={roomId} className="flex flex-col ">
+      <Tooltip content={roomTitle}>
+        <button
+          className={`flex items-center justify-center w-12 h-12 mb-2
+          ${isUserInRoom ? 'border-2 border-green animate__animated animate__pulse ' : ''}
+                        text-gray-500 transition-colors duration-150  bg-gray opacity-80
+                        scale-110 transition-shadow shadow-lg hover:text-gray-700 hover:bg-gray-100 focus:outline-none 
+                        transition-transform transform hover:scale-110
+                        hover:opacity-100 hover:transform hover:scale-75
+                        focus:outline-none transition-transform transform
+                        hover:animate__animated  hover:animate__headShake
+                        cursor-pointer
+                          shadow-2xl hover:scale-110
+                           animate__animated  animate__flipInX
+                      rounded-full hover:rounded-lg `}
+          onClick={handleJoinActiveRoom}
+        >
+          <span
+            className={`${
+              isUserInRoom
+                ? 'transition duration-[100ms] animate__animated animate__heartBeat '
+                : ''
+            }`}
+          >
+            {creatorUsername.charAt(0)}
+          </span>
+        </button>
+      </Tooltip>
     </div>
   );
 };

@@ -8,7 +8,7 @@ import App from 'modules/common/app/App';
 import { store } from './app/store';
 import { ToastContainer } from 'react-toast';
 import 'app/styles/index.css';
-import { ThemeProvider } from "@material-tailwind/react";
+import { ThemeProvider } from '@material-tailwind/react';
 
 const container = document.getElementById('root')!;
 const root = createRoot(container);
@@ -16,14 +16,14 @@ const root = createRoot(container);
 root.render(
   <StrictMode>
     <ThemeProvider>
-    <BrowserRouter>
-      <DevSupport ComponentPreviews={ComponentPreviews} useInitialHook={useInitial}>
-        <Provider store={store}>
-          <App />
-        </Provider>
-      </DevSupport>
-      <ToastContainer delay={5000} position="top-right" />
-    </BrowserRouter>
+      <BrowserRouter>
+        <DevSupport ComponentPreviews={ComponentPreviews} useInitialHook={useInitial}>
+          <Provider store={store}>
+            <App />
+          </Provider>
+        </DevSupport>
+        <ToastContainer delay={5000} position="top-right" />
+      </BrowserRouter>
     </ThemeProvider>
   </StrictMode>,
 );

@@ -1,12 +1,12 @@
 import { ReactNode, useEffect, useRef } from 'react';
-import ReactDOM from "react-dom";
+import ReactDOM from 'react-dom';
 
 interface IPortal {
   children: ReactNode;
   className?: string;
 }
 
-const Portal = ({ children, className }:IPortal) => {
+const Portal = ({ children, className }: IPortal) => {
   const bodyRef = useRef(document.getElementsByTagName(`body`)[0]);
   const elementRef = useRef(document.createElement(`div`));
 
@@ -14,7 +14,7 @@ const Portal = ({ children, className }:IPortal) => {
     const element = elementRef.current;
     const portalRoot = bodyRef.current;
 
-    element.className = "portal-root";
+    element.className = 'portal-root';
 
     if (className) {
       element.className = `${element.className} ${className}`;

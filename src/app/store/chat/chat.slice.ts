@@ -10,7 +10,7 @@ const initialState: IChatState = {
 interface IChosenChatDetails {
   id: string;
   name: string;
-  mail:string;
+  mail: string;
   chatType: ChatTypes;
 }
 
@@ -20,7 +20,11 @@ export const chatSlice = createSlice({
   reducers: {
     setChosenChatDetails: (state, action: PayloadAction<IChosenChatDetails>) => {
       state.chatType = action.payload.chatType;
-      state.chosenChatDetails = { id: action.payload.id, mail: action.payload.mail, name: action.payload.name };
+      state.chosenChatDetails = {
+        id: action.payload.id,
+        mail: action.payload.mail,
+        name: action.payload.name,
+      };
     },
     setMessages: (state, action: PayloadAction<any>) => {
       state.messages = action.payload;

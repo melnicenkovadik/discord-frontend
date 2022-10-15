@@ -22,18 +22,19 @@ export const FriendsListItem = ({ friend: { id, isOnline, mail, username } }: IF
   }
 
   return (
-    <div key={id}
-         onClick={handleChoseActiveConversation}
-         className='flex items-center justify-start w-full min-h-[40px] mb-2
+    <div
+      key={id}
+      onClick={handleChoseActiveConversation}
+      className="flex items-center justify-start w-full min-h-[40px] mb-2
                 animate__animated animate__fadeInUpBig
-                  hover:bg-darkGray rounded-md cursor-pointer px-2'>
-      <div className='rounded-full w-[30px] h-[30px] bg-purple relative'>
+                  hover:bg-darkGray rounded-md cursor-pointer px-2"
+    >
+      <div className="rounded-full w-[30px] h-[30px] bg-purple relative">
         {isOnline && (
-          <div
-            className='rounded-full w-[10px] h-[10px] bg-green-500 absolute bottom-0 right-0 border-2 border-white'></div>
+          <div className="rounded-full w-[10px] h-[10px] bg-green-500 absolute bottom-0 right-0 border-2 border-white"></div>
         )}
       </div>
-      <span className='text-white ml-2'>{username}</span>
+      <span className="text-white ml-2">{username}</span>
     </div>
   );
 };

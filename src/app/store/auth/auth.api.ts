@@ -15,7 +15,8 @@ export const authApi = createApi({
   reducerPath: 'authApi',
   baseQuery: fetchBaseQuery({
     baseUrl: `${process.env.REACT_APP_API_ENDPOINT}`,
-  }),  endpoints: builder => ({
+  }),
+  endpoints: builder => ({
     login: builder.query<UserDetails, UserDetails>({
       query: ({ password, mail }) => ({
         url: '/auth/login',

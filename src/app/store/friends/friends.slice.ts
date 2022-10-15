@@ -16,10 +16,10 @@ export const friendsSlice = createSlice({
     },
     setPendingFriendsInvitations: (state, action: PayloadAction<any>) => {
       state.pendingFriendsInvitations = action.payload;
-    } ,
+    },
     setOnlineUsers: (state, action: PayloadAction<any>) => {
       state.onlineUsers = action.payload;
-    }
+    },
   },
 });
 
