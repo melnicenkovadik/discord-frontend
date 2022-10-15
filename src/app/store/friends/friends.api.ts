@@ -4,7 +4,7 @@ const AuthorizationBearer = `Bearer ${JSON.parse(localStorage.getItem('auth') ||
 export const friendsApi = createApi({
   reducerPath: 'friendsApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: `${process.env.REACT_APP_API_ENDPOINT}`,
+    baseUrl: `${process.env.REACT_APP_API_ENDPOINT}/api`,
   }),
   endpoints: builder => ({
     sendFriendInvitation: builder.query<string, string>({
