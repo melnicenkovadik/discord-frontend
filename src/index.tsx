@@ -10,6 +10,7 @@ import { ToastContainer } from 'react-toast';
 import 'app/styles/index.css';
 import { ThemeProvider } from '@material-tailwind/react';
 
+
 const container = document.getElementById('root')!;
 const root = createRoot(container);
 
