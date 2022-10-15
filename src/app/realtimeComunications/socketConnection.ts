@@ -47,7 +47,7 @@ const updateChatHistoryIfSameConversationActive = ({
 export const connectWithSocketServer = (user: UserDetails) => {
   const token = user.token ?? JSON.parse(localStorage.getItem('auth') || '{}')?.token;
 
-  socket = io(`${process.env.REACT_APP_API_ENDPOINT}`, {
+  socket = io(`${process.env.REACT_APP_API_ENDPOINT}:${process.env.PORT}`, {
     auth: {
       token,
     },
